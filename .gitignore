@@ -1,0 +1,17 @@
+.idea/
+*.iml
+logs
+target
+.settings
+.classpath
+.project
+Server
+.metadata/
+*.versionsBackup
+*.class
+Servers/
+/bin/
+.DS_Store
+/.DS_Store
+.idea
+
