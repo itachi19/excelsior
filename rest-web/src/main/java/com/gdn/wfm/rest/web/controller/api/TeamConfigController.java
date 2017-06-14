@@ -4,10 +4,12 @@ import com.gdn.wfm.LevelRegistrationService;
 import com.gdn.wfm.model.entity.Level;
 import com.gdn.wfm.rest.web.controller.util.LevelUtil;
 import com.gdn.wfm.rest.web.model.request.LevelRequest;
+import com.gdn.wfm.rest.web.model.request.LevelRequestTeamName;
 import com.gdn.wfm.rest.web.model.response.LevelResponse;
 import com.wordnik.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,21 +32,28 @@ public class TeamConfigController {
   }
 
 
-  @RequestMapping(value="/team",method = {RequestMethod.POST})
-  public LevelResponse setUpNewTeam(@RequestBody @Validated LevelRequest levelRequest)
+  @RequestMapping(value="/team",method = {RequestMethod.POST},consumes = {MediaType.APPLICATION_JSON_VALUE})
+  public LevelResponse setUpNewTeam(@RequestBody LevelRequest levelRequest)
   {
     LevelResponse levelResponse;
-    Level team= levelRegistrationService.setUpNewLevel(levelRequest.getLevelName(), levelRequest.getParentID());
+    Level team= levelRegistrationService.setUpNewLevel(levelRequest.getLevelName(),1);
     levelResponse=new LevelResponse(true,HttpStatus.OK.value(),LevelUtil.mapLevel(team));
     return levelResponse;
   }
 
-  @RequestMapping(value="/team/level",method = {RequestMethod.POST})
-  public LevelResponse addNewLevel(String levelName, String parentLevelName,String teamName)
+  @RequestMapping(value="/level",method = {RequestMethod.POST},consumes = {MediaType.APPLICATION_JSON_VALUE})
+  public LevelResponse addNewLevel(@RequestBody LevelRequest levelRequest)
+  {
+    Level newLevel=levelRegistrationService.setUpNewLevel(levelRequest.getLevelName(), levelRequest.getParentId());
+    return new LevelResponse(true, HttpStatus.OK.value(), LevelUtil.mapLevel(newLevel));
+  }
+
+  @RequestMapping(value="/team/level",method = {RequestMethod.POST},consumes = {MediaType.APPLICATION_JSON_VALUE})
+  public LevelResponse addNewLevel(@RequestBody LevelRequestTeamName levelRequestTeamName)
   {
 
-    List<Level> parentLevelInfo=levelRegistrationService.getLevelInfo(parentLevelName,teamName);
-    Level newLevel=levelRegistrationService.setUpNewLevel(levelName, parentLevelInfo.get(0).getId());
+    List<Level> parentLevelInfo=levelRegistrationService.getLevelInfo(levelRequestTeamName.getParentLevelName(),levelRequestTeamName.getTeamName());
+    Level newLevel=levelRegistrationService.setUpNewLevel(levelRequestTeamName.getLevelName(), parentLevelInfo.get(0).getId());
     return new LevelResponse(true, HttpStatus.OK.value(), LevelUtil.mapLevel(newLevel));
     //return newLevel;
   }

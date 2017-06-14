@@ -15,7 +15,7 @@ public class LevelUtil {
     public static Level mapLevel(com.gdn.wfm.model.entity.Level level) {
 
         return Level.newBuilder().withId(level.getId()).withLevelName(level.getLevelName())
-                .withParentID(level.getParentLevelID()).build();
+                .withParentID(level.getParentLevelId()).build();
     }
 
     public static List<Level> mapLevels(List<com.gdn.wfm.model.entity.Level> levels) {

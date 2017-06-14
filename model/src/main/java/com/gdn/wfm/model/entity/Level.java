@@ -23,13 +23,13 @@ public class  Level implements Serializable {
     private String levelName;
 
     @Column(name="parent_id" , nullable = false)
-    private long parentLevelID;
+    private long parentLevelId;
 
     protected Level() {}
 
-    public Level(String levelName, long parentLevelID) {
+    public Level(String levelName, long parentLevelId) {
         this.levelName=levelName;
-        this.parentLevelID=parentLevelID;
+        this.parentLevelId=parentLevelId;
     }
 
     public long getId() {
@@ -44,8 +44,8 @@ public class  Level implements Serializable {
         return levelName;
     }
 
-    public long getParentLevelID() {
-        return parentLevelID;
+    public long getParentLevelId() {
+        return parentLevelId;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class  Level implements Serializable {
         final StringBuilder sb = new StringBuilder("User{");
         sb.append("id=").append(id);
         sb.append(", levelName='").append(levelName).append('\'');
-        sb.append(", parentLevelID='").append(parentLevelID).append('\'');
+        sb.append(", parentLevelId='").append(parentLevelId).append('\'');
         sb.append('}');
         return sb.toString();
     }

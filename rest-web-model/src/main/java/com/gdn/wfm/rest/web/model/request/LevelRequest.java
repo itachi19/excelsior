@@ -26,12 +26,12 @@ public class LevelRequest implements Serializable{
         this.levelName = levelName;
     }
 
-    public long getParentID() {
-        return parentID;
+    public long getParentId() {
+        return parentId;
     }
 
-    public void setParentID(long parentID) {
-        this.parentID = parentID;
+    public void setParentId(long parentId) {
+        this.parentId = parentId;
     }
 
     public String getDescription() {
@@ -42,7 +42,7 @@ public class LevelRequest implements Serializable{
         this.description = description;
     }
 
-    private long parentID;
+    private long parentId;
 
     private String description;
 
@@ -51,9 +51,9 @@ public class LevelRequest implements Serializable{
      */
     public LevelRequest() {}
 
-    public LevelRequest(String levelName,long parentID) {
+    public LevelRequest(String levelName,long parentId) {
         this.levelName = levelName;
-        this.parentID=parentID;
+        this.parentId=parentId;
     }
 
 

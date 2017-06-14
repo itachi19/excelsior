@@ -20,62 +20,25 @@ public class User {
   @Column(name = "user_name", nullable = false)
   private String userName;
 
-  @Column(name = "first_name", nullable = false)
-  private String firstName;
+  @Column(name = "job_id", nullable = false)
+  private long jobId;
 
-  @Column(name = "last_name", nullable = false)
-  private String lastName;
-
-  @Column(name = "email", nullable = false)
-  private String email;
 
   protected User() {}
 
-  public User(String userName, String email) {
+  public User(String userName, long jobId) {
     this.userName = userName;
-    this.email = email;
+    this.jobId = jobId;
   }
 
-  public long getId() {
-    return id;
-  }
 
-  public void setId(long id) {
-    this.id = id;
-  }
-
-  public String getUserName() {
-    return userName;
-  }
-
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public void setFirstName(String firstName) {
-    this.firstName = firstName;
-  }
-
-  public String getLastName() {
-    return lastName;
-  }
-
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
-  }
-
-  public String getEmail() {
-    return email;
-  }
 
   @Override
   public String toString() {
     final StringBuilder sb = new StringBuilder("User{");
     sb.append("id=").append(id);
     sb.append(", userName='").append(userName).append('\'');
-    sb.append(", firstName='").append(firstName).append('\'');
-    sb.append(", lastName='").append(lastName).append('\'');
-    sb.append(", email='").append(email).append('\'');
+    sb.append(", jobId='").append(jobId).append('\'');
     sb.append('}');
     return sb.toString();
   }

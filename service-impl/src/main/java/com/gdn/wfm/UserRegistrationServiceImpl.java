@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by avinashkumar on 20/04/2017 AD.
  */
-public class UserRegistrationServiceImpl implements UserRegistrationService{
+public class UserRegistrationServiceImpl implements UserRegistrationService {
 
 
     private UserRepository userRepository;
@@ -25,8 +25,4 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
         return userRepository.findAll();
     }
 
-    @Override
-    public List<User> getAllUsersInJob(int levelId) {
-        return null;
-    }
 }

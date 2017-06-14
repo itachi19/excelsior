@@ -32,7 +32,7 @@ public class Application {
 
       @Override
       public void run(String... args) throws Exception {
-        System.err.println(repository.getLevelInfo("PickUp","BLIBLI"));
+        System.err.println(repository.getLevelInfo("PickUp","BES"));
         //System.err.println(repository.getAllLevelInfo());
       }
 

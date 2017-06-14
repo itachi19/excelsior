@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface LevelRegistrationService {
 
-    Level setUpNewLevel(String levelName,long parentLevelID);
+    Level setUpNewLevel(String levelName,long parentLevelId);
 
     List<Level> getLevelInfo(String levelName,String teamName);
 

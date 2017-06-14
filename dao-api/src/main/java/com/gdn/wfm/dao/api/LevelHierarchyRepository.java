@@ -19,7 +19,7 @@ public interface LevelHierarchyRepository extends JpaRepository<Level,Long> {
     @Query(value=" WITH RECURSIVE levels_cte(id, label, parent_id, depth,team_id) AS(" +
             " SELECT tn.id, tn.label, tn.parent_id , CAST('1' AS INTEGER) AS depth,CAST(tn.id AS INTEGER) AS team_id"+
             " FROM level_hierarchy AS tn "+
-            " WHERE tn.parent_id = 0"+
+            " WHERE tn.parent_id = 1"+
             "UNION ALL"+
             " SELECT c.id, c.label, c.parent_id, p.depth + 1 AS depth," +
             "        (p.team_id)"+
@@ -57,7 +57,7 @@ public interface LevelHierarchyRepository extends JpaRepository<Level,Long> {
     @Query(value= "WITH RECURSIVE levels_cte(id, label, parent_id, depth,team_id) AS(" +
             " SELECT tn.id, tn.label, tn.parent_id , CAST('1' AS INTEGER) AS depth,CAST(tn.id AS INTEGER) AS team_id"+
             " FROM level_hierarchy AS tn "+
-            " WHERE tn.parent_id = 0"+
+            " WHERE tn.parent_id = 1"+
             "UNION ALL"+
             " SELECT c.id, c.label, c.parent_id, p.depth + 1 AS depth," +
             "        (p.team_id)"+

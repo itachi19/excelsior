@@ -14,13 +14,11 @@ public class Level implements Serializable {
     private long id;
     private String levelName;
     private long parentID;
-    private boolean isLeaf;
 
     private Level(Builder builder) {
         id = builder.id;
         levelName = builder.levelName;
         parentID = builder.parentID;
-        isLeaf=true;
     }
 
     public static Builder newBuilder() {
@@ -39,13 +37,11 @@ public class Level implements Serializable {
         return parentID;
     }
 
-    public boolean getIsLeaf(){ return isLeaf;}
 
     public static final class Builder {
         private long id;
         private String levelName;
         private long parentID;
-        private boolean isLeaf;
 
         private Builder() {
         }
@@ -65,10 +61,6 @@ public class Level implements Serializable {
             return this;
         }
 
-        public Builder withIsLeaf(boolean val) {
-            isLeaf = val;
-            return this;
-        }
 
         public Level build() {
             return new Level(this);

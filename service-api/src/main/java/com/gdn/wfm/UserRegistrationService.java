@@ -9,6 +9,4 @@ public interface UserRegistrationService {
 
     List<User> getAllUsers();
 
-    List<User> getAllUsersInJob(int levelId);
-
 }

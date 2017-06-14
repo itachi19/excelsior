@@ -24,16 +24,16 @@ public class LevelRegistrationServiceImpl implements LevelRegistrationService {
         this.levelHierarchyRepository = levelHierarchyRepository;
     }
 
-    @Override
-    public Level setUpNewLevel(String levelName,long parentLevelID) {
 
-        Level level=new Level(levelName,parentLevelID);
+    @Override
+    public Level setUpNewLevel(String levelName, long parentLevelId) {
+
+        Level level=new Level(levelName,parentLevelId);
 
         levelHierarchyRepository.save(level);
 
         return level;
     }
-
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
