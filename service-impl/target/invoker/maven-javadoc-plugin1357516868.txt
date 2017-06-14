@@ -1,0 +1,25 @@
+Invoking Maven for the goals: [org.apache.maven.plugins:maven-javadoc-plugin:2.10.3:javadoc] with no properties
+
+M2_HOME=/Applications/maven
+MAVEN_OPTS=null
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/jre
+JAVA_OPTS=null
+
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building com.gdn.wfm-wfm-outbound-api 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] >>> maven-javadoc-plugin:2.10.3:javadoc (default-cli) > generate-sources @ wfm-outbound-api >>>
+[INFO] 
+[INFO] <<< maven-javadoc-plugin:2.10.3:javadoc (default-cli) < generate-sources @ wfm-outbound-api <<<
+[INFO] 
+[INFO] --- maven-javadoc-plugin:2.10.3:javadoc (default-cli) @ wfm-outbound-api ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1.876 s
+[INFO] Finished at: 2017-06-12T17:42:49+05:30
+[INFO] Final Memory: 18M/193M
+[INFO] ------------------------------------------------------------------------

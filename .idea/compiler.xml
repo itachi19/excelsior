@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="wfm-client-java-sdk" />
+        <module name="wfm-dao-api" />
+        <module name="wfm-dao-jpa" />
+        <module name="wfm-model" />
+        <module name="wfm-outbound-api" />
+        <module name="wfm-outbound-impl" />
+        <module name="wfm-rest-web" />
+        <module name="wfm-rest-web-model" />
+        <module name="wfm-service-api" />
+        <module name="wfm-service-impl" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="wfm-client-java-sdk" target="1.8" />
+      <module name="wfm-dao-api" target="1.8" />
+      <module name="wfm-dao-jpa" target="1.8" />
+      <module name="wfm-model" target="1.8" />
+      <module name="wfm-outbound-api" target="1.8" />
+      <module name="wfm-outbound-impl" target="1.8" />
+      <module name="wfm-parent" target="1.6" />
+      <module name="wfm-rest-web" target="1.8" />
+      <module name="wfm-rest-web-model" target="1.8" />
+      <module name="wfm-service-api" target="1.8" />
+      <module name="wfm-service-impl" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
