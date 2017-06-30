@@ -42,5 +42,13 @@
       <groupId>org.freemarker</groupId>
       <artifactId>freemarker</artifactId>
     </dependency>
+      <dependency>
+          <groupId>com.gdn.wfm</groupId>
+          <artifactId>wfm-rest-web-model</artifactId>
+      </dependency>
+    <dependency>
+      <groupId>com.gdn.wfm</groupId>
+      <artifactId>wfm-rest-web-model</artifactId>
+    </dependency>
   </dependencies>
 </project>

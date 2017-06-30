@@ -2,6 +2,7 @@ package com.gdn.wfm.model.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by avinashkumar on 20/04/2017 AD.
@@ -17,13 +18,18 @@ public class  Level implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "level_id_seq")
     @SequenceGenerator(name = LEVEL_ID_SEQ, sequenceName = "level_id_seq", allocationSize = 1)
+    @Column(name = "level_id")
     private long id;
 
-    @Column(name = "label", nullable = false)
+    @Column(name = "label")
     private String levelName;
 
-    @Column(name="parent_id" , nullable = false)
+    @Column(name="parent_id" )
     private long parentLevelId;
+
+    @OneToMany(mappedBy = "level",cascade = CascadeType.ALL)
+    private List<LevelDetail> levelDetails;
+
 
     protected Level() {}
 
@@ -32,6 +38,14 @@ public class  Level implements Serializable {
         this.parentLevelId=parentLevelId;
     }
 
+
+    public List<LevelDetail> getLevelDetails() {
+        return levelDetails;
+    }
+
+    public void setLevelDetails(List<LevelDetail> levelDetails) {
+        this.levelDetails = levelDetails;
+    }
     public long getId() {
         return id;
     }
@@ -57,6 +71,5 @@ public class  Level implements Serializable {
         sb.append('}');
         return sb.toString();
     }
-
 
 }

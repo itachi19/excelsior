@@ -1,6 +1,7 @@
 package com.gdn.wfm.rest.web.controller.util;
 
 import com.gdn.wfm.rest.web.model.entity.Level;
+import com.gdn.wfm.rest.web.model.entity.LevelDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,21 @@ public class LevelUtil {
         levels.forEach(level -> levelEntities.add(mapLevel(level)));
         return levelEntities;
     }
+//    public static Level mapLevelWithDetails(com.gdn.wfm.model.entity.Level level, LevelDetail levelDetails) {
+//
+//        return Level.newBuilder().withId(level.getId()).withLevelName(level.getLevelName())
+//                .withParentID(level.getParentLevelId()).withLevelDetails(levelDetails).build();
+//    }
+//
+//    public static List<Level> mapLevelsWithDetails(List<com.gdn.wfm.model.entity.Level> levels,List<LevelDetail> levelDetails) {
+//
+//        List<Level> levelEntities = new ArrayList<Level>(levels.size());
+//        for(int i=0;i<levels.size();i++)
+//        {
+//            levelEntities.add(mapLevelWithDetails(levels.get(i),levelDetails.get(i)));
+//        }
+//        return levelEntities;
+//    }
 
 }
 

@@ -1,10 +1,13 @@
 package com.gdn.wfm.rest.web.model.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.gdn.wfm.rest.web.model.entity.Level;
+import com.gdn.wfm.rest.web.model.entity.LevelDetails;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by avinashkumar on 29/04/2017 AD.
@@ -15,8 +18,11 @@ public class LevelRequest implements Serializable{
     private static final long serialVersionUID = 1;
 
     @NotNull
-    @Size(min = 5, max = 50, message = "error.level.name")
     private String levelName;
+    @NotNull
+    private long parentId;
+    @NotNull
+    private List<LevelDetails> levelDetails;
 
     public String getLevelName() {
         return levelName;
@@ -34,27 +40,53 @@ public class LevelRequest implements Serializable{
         this.parentId = parentId;
     }
 
-    public String getDescription() {
-        return description;
+    public List<LevelDetails> getLevelDetails() {
+        return levelDetails;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setLevelDetails(List<LevelDetails> levelDetails) {
+        this.levelDetails = levelDetails;
     }
 
-    private long parentId;
+    public static Builder newBuilder() {
+        return new Builder();
+    }
 
-    private String description;
-
-    /**
-     * default constructor.
-     */
     public LevelRequest() {}
 
-    public LevelRequest(String levelName,long parentId) {
-        this.levelName = levelName;
-        this.parentId=parentId;
+
+    private LevelRequest(LevelRequest.Builder builder) {
+        levelName = builder.levelName;
+        parentId = builder.parentId;
+        levelDetails=builder.levelDetails;
     }
 
+    public static final class Builder {
+        private String levelName;
+        private long parentId;
+        private List<LevelDetails> levelDetails;
+
+        private Builder() {
+        }
+
+        public LevelRequest.Builder withLevelName(String val) {
+            levelName = val;
+            return this;
+        }
+
+        public LevelRequest.Builder withParentID(long val) {
+            parentId = val;
+            return this;
+        }
+
+        public LevelRequest.Builder withLevelRequestDetails(List<LevelDetails> val) {
+            levelDetails = val;
+            return this;
+        }
+        public LevelRequest build() {
+            return new LevelRequest(this);
+        }
+
+    }
 
 }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by avinashkumar on 26/04/2017 AD.
@@ -14,34 +15,61 @@ public class Level implements Serializable {
     private long id;
     private String levelName;
     private long parentID;
+    private List<LevelDetails> levelDetails;
 
     private Level(Builder builder) {
         id = builder.id;
         levelName = builder.levelName;
         parentID = builder.parentID;
-    }
-
-    public static Builder newBuilder() {
-        return new Builder();
+        levelDetails=builder.levelDetails;
     }
 
     public long getId() {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getLevelName() {
         return levelName;
+    }
+
+    public void setLevelName(String levelName) {
+        this.levelName = levelName;
     }
 
     public long getParentID() {
         return parentID;
     }
 
+    public void setParentID(long parentID) {
+        this.parentID = parentID;
+    }
+
+    public List<LevelDetails> getLevelDetails() {
+        return levelDetails;
+    }
+
+    public void setLevelDetails(List<LevelDetails> levelDetails) {
+        this.levelDetails = levelDetails;
+    }
+
+
+
+    public static Builder newBuilder() {
+        return new Builder();
+    }
+
+
+
 
     public static final class Builder {
         private long id;
         private String levelName;
         private long parentID;
+        private List<LevelDetails> levelDetails;
 
         private Builder() {
         }
@@ -61,7 +89,10 @@ public class Level implements Serializable {
             return this;
         }
 
-
+        public Builder withLevelDetails(List<LevelDetails> val) {
+            levelDetails = val;
+            return this;
+        }
         public Level build() {
             return new Level(this);
         }

@@ -1,12 +1,10 @@
 package com.gdn.wfm.util;
 
-import com.gdn.wfm.LevelRegistrationService;
-import com.gdn.wfm.rest.web.model.entity.Level;
+;
+import com.gdn.wfm.model.entity.LevelDetail;
+import com.gdn.wfm.model.entity.ParamDetail;
 import com.gdn.wfm.rest.web.model.entity.LevelDetails;
-import com.gdn.wfm.rest.web.model.request.LevelRequest;
-import com.gdn.wfm.rest.web.model.request.LevelRequestAttribute;
-import com.gdn.wfm.rest.web.model.request.LevelRequestTeamName;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.gdn.wfm.rest.web.model.entity.ParamDetails;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,33 +14,51 @@ import java.util.List;
  */
 public class LevelDetailUtil {
 
-    private static LevelRegistrationService levelRegistrationService;
 
-    @Autowired
-    public LevelDetailUtil(LevelRegistrationService levelRegistrationService) {
-        this.levelRegistrationService = levelRegistrationService;
-    }
+    public static LevelDetail mapLevelDetail(LevelDetails levelDetails) {
 
-    public static LevelRequest mapLevelRequet(LevelRequestTeamName levelRequestTeamName) {
-
-        List<com.gdn.wfm.model.entity.Level> parentLevelInfo=levelRegistrationService.getLevelInfo(levelRequestTeamName.getParentLevelName(),
-                levelRequestTeamName.getTeamName());
-
-        return LevelRequest.newBuilder().withParentID(parentLevelInfo.get(0).getId()).withLevelName(levelRequestTeamName.getLevelName())
-                .withLevelRequestDetails(levelRequestTeamName.getLevelRequestDetails()).build();
-    }
-
-    public static com.gdn.wfm.model.entity.LevelDetails mapLevelDetail(LevelDetails levelDetails) {
-
-        return new com.gdn.wfm.model.entity.LevelDetails(levelDetails.getName(),levelDetails.getType(),levelDetails.getDataSoucre()
+        return new LevelDetail(levelDetails.getName(),levelDetails.getType(),levelDetails.getDataSource()
         ,levelDetails.getQuery(),levelDetails.getResultType());
     }
 
-    public static List<com.gdn.wfm.model.entity.LevelDetails> mapLevelDetails(List<LevelDetails> levelDetails) {
 
-        List<com.gdn.wfm.model.entity.LevelDetails> levelDetailz = new ArrayList<>(levelDetails.size());
-        levelDetails.forEach(ld -> levelDetailz.add(mapLevelDetail(ld)));
-        return levelDetailz;
+
+    public static List<LevelDetail> mapLevelDetails(List<LevelDetails> levelDetails, com.gdn.wfm.model.entity.Level level) {
+
+        List<LevelDetail> levelDetailList = new ArrayList<LevelDetail>();
+
+        for(int i=0;i<levelDetails.size();i++)
+        {
+            LevelDetail levelDetail = mapLevelDetail(levelDetails.get(i));
+            levelDetail.setParamDetails(mapParamDetails(levelDetails.get(i).getParams(),levelDetail));
+            levelDetail.setLevel(level);
+            levelDetailList.add(levelDetail);
+
+        }
+        return levelDetailList;
+    }
+
+
+
+
+    public static ParamDetail mapParamDetail(ParamDetails paramDetails) {
+
+        return new ParamDetail(paramDetails.getParamName(),paramDetails.getParamValue());
+    }
+
+
+
+    public static List<ParamDetail> mapParamDetails(List<ParamDetails> paramDetails, LevelDetail levelDetail) {
+
+        List<ParamDetail> paramDetailz = new ArrayList<ParamDetail>();
+        for(int i=0;i<paramDetails.size();i++)
+        {
+            ParamDetail pd=mapParamDetail(paramDetails.get(i));
+            pd.setLevelDetail(levelDetail);
+            paramDetailz.add(pd);
+        }
+        //  paramDetails.forEach(pd -> paramDetailz.add(mapParamDetail(pd)));
+        return paramDetailz;
     }
 
 }

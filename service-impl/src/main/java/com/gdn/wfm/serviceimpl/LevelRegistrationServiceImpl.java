@@ -1,21 +1,19 @@
-package com.gdn.wfm;
+package com.gdn.wfm.serviceimpl;
 
+import com.gdn.wfm.LevelRegistrationService;
 import com.gdn.wfm.dao.api.CustomDao;
 import com.gdn.wfm.dao.api.LevelDetailsRepository;
 import com.gdn.wfm.dao.api.LevelHierarchyRepository;
 import com.gdn.wfm.dao.api.ParamDetailsRepository;
 import com.gdn.wfm.model.entity.Level;
-import com.gdn.wfm.rest.web.model.entity.LevelDetails;
 import com.gdn.wfm.rest.web.model.request.LevelRequest;
-import com.gdn.wfm.rest.web.model.request.LevelRequestAttribute;
+import com.gdn.wfm.util.LevelDetailUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by avinashkumar on 20/04/2017 AD.
@@ -48,7 +46,7 @@ public class LevelRegistrationServiceImpl implements LevelRegistrationService {
     public Level setUpNewLevel(LevelRequest levelRequest) {
 
         Level level=new Level(levelRequest.getLevelName(),levelRequest.getParentId());
-        level.setLevelDetailsIds(LevelRequestUtil.mapLevelDetails(levelRequest.getLevelRequestDetails());
+        level.setLevelDetails(LevelDetailUtil.mapLevelDetails(levelRequest.getLevelDetails(), level ));
 
         levelHierarchyRepository.save(level);
 
@@ -77,17 +75,17 @@ public class LevelRegistrationServiceImpl implements LevelRegistrationService {
         return levelHierarchyRepository.getAllLevelInfoInTeam(teamName);
     }
 
-    @Override
-    public LevelDetails getlevelDetails(List<LevelRequestAttribute> levelRequestAttribute) {
-
-        Map<String,String> queryResult=new HashMap<String,String>();
-        for(int i=0;i<levelRequestAttribute.size();i++)
-        {
-            LevelRequestAttribute attribute=levelRequestAttribute.get(i);
-            queryResult.put(attribute.getName()
-                    ,customDao.getQueryResult(attribute.getQuery(),attribute.getParams(),attribute.getResultType()));
-        }
-        LevelDetails levelDetails= LevelDetails.newBuilder().withLevelDetails(queryResult).build();
-        return null;
-    }
+//    @Override
+//    public LevelDetail getlevelDetails(List<LevelRequestAttribute> levelRequestAttribute) {
+//
+//        Map<String,String> queryResult=new HashMap<String,String>();
+//        for(int i=0;i<levelRequestAttribute.size();i++)
+//        {
+//            LevelRequestAttribute attribute=levelRequestAttribute.get(i);
+//            queryResult.put(attribute.getName()
+//                    ,customDao.getQueryResult(attribute.getQuery(),attribute.getParams(),attribute.getResultType()));
+//        }
+//        LevelDetail levelDetails= LevelDetail.newBuilder().withLevelDetails(queryResult).build();
+//        return null;
+//    }
 }

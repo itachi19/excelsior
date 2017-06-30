@@ -5,6 +5,6 @@ import java.util.Map;
 /**
  * Created by avinashkumar on 15/06/2017 AD.
  */
-public interface ResultHandler {
+public class ResultHandlerInteger implements ResultHandler {
 
 }

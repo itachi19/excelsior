@@ -1,7 +1,9 @@
 package com.gdn.wfm.rest.web;
 
 import com.gdn.wfm.LevelRegistrationService;
+import com.gdn.wfm.dao.api.LevelDetailsRepository;
 import com.gdn.wfm.dao.api.LevelHierarchyRepository;
+import com.gdn.wfm.dao.api.ParamDetailsRepository;
 import com.gdn.wfm.rest.web.controller.api.TeamConfigController;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -18,7 +20,6 @@ import com.gdn.wfm.model.entity.Level;
 @SpringBootApplication(scanBasePackages = "com.gdn.wfm")
 @EnableJpaRepositories("com.gdn.wfm.dao.api")
 @EntityScan("com.gdn.wfm.model.entity")
-//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class,HibernateJpaAutoConfiguration.class})
 public class Application {
 
   public static void main(String[] args) {
@@ -27,13 +28,14 @@ public class Application {
   }
 
   @Bean
-  public CommandLineRunner runner(final LevelHierarchyRepository repository, LevelRegistrationService service) {
+  public CommandLineRunner runner(LevelHierarchyRepository levelHierarchyRepository, LevelDetailsRepository
+          levelDetailsRepository, ParamDetailsRepository paramDetailsRepository, LevelRegistrationService service) {
     return new CommandLineRunner() {
 
       @Override
       public void run(String... args) throws Exception {
-        System.err.println(repository.getLevelInfo("PickUp","BES"));
-        //System.err.println(repository.getAllLevelInfo());
+        System.err.println(levelHierarchyRepository.getLevelInfo("Ceper","BES"));
+        System.err.println(levelDetailsRepository.findAll());
       }
 
     };

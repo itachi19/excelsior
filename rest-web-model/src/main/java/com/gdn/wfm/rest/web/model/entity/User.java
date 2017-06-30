@@ -13,6 +13,7 @@ public class User implements Serializable {
     private String userName;
     private long jobId;
 
+
     public void setId(long id) {
         this.id = id;
     }

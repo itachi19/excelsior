@@ -16,32 +16,32 @@ public interface LevelHierarchyRepository extends JpaRepository<Level,Long> {
     String LEVEL_NAME = "levelName";
     String TEAM_NAME="teamName";
 
-    @Query(value=" WITH RECURSIVE levels_cte(id, label, parent_id, depth,team_id) AS(" +
-            " SELECT tn.id, tn.label, tn.parent_id , CAST('1' AS INTEGER) AS depth,CAST(tn.id AS INTEGER) AS team_id"+
+    @Query(value=" WITH RECURSIVE levels_cte(level_id, label, parent_id, depth,team_id) AS(" +
+            " SELECT tn.level_id, tn.label, tn.parent_id , CAST('1' AS INTEGER) AS depth,CAST(tn.level_id AS INTEGER) AS team_id"+
             " FROM level_hierarchy AS tn "+
             " WHERE tn.parent_id = 1"+
             "UNION ALL"+
-            " SELECT c.id, c.label, c.parent_id, p.depth + 1 AS depth," +
+            " SELECT c.level_id, c.label, c.parent_id, p.depth + 1 AS depth," +
             "        (p.team_id)"+
             " FROM levels_cte AS p, level_hierarchy AS c "+
-            " WHERE c.parent_id = p.id"+
+            " WHERE c.parent_id = p.level_id"+
             ")"+
             "SELECT * FROM levels_cte AS n WHERE n.label = :levelName AND n.team_id= " +
-            "   (SELECT t.id FROM level_hierarchy AS t WHERE t.label=:teamName )",nativeQuery = true)
+            "   (SELECT t.level_id FROM level_hierarchy AS t WHERE t.label=:teamName )",nativeQuery = true)
 
     List<Level> getLevelInfo(@Param(LEVEL_NAME) String levelName, @Param(TEAM_NAME) String teamName);
 
-    @Query(value= "WITH RECURSIVE levels_cte(id, label, parent_id, depth,team_id) AS(" +
-            " SELECT tn.id, tn.label, tn.parent_id , CAST('1' AS INTEGER) AS depth,CAST(tn.id AS INTEGER) AS team_id"+
+    @Query(value= "WITH RECURSIVE levels_cte(level_id, label, parent_id, depth,team_id) AS(" +
+            " SELECT tn.level_id, tn.label, tn.parent_id , CAST('1' AS INTEGER) AS depth,CAST(tn.level_id AS INTEGER) AS team_id"+
             " FROM level_hierarchy AS tn "+
             " WHERE tn.parent_id = 0"+
             "UNION ALL"+
-            " SELECT c.id, c.label, c.parent_id, p.depth + 1 AS depth," +
+            " SELECT c.level_id, c.label, c.parent_id, p.depth + 1 AS depth," +
             "        (p.team_id)"+
             " FROM levels_cte AS p, level_hierarchy AS c "+
-            " WHERE c.parent_id = p.id"+
+            " WHERE c.parent_id = p.level_id"+
             ")"+
-            "SELECT * FROM levels_cte AS n ORDER BY n.id ASC",nativeQuery = true)
+            "SELECT * FROM levels_cte AS n ORDER BY n.level_id ASC",nativeQuery = true)
 
     List<Level> getAllLevelInfo();
 
@@ -54,17 +54,17 @@ public interface LevelHierarchyRepository extends JpaRepository<Level,Long> {
 
 
 
-    @Query(value= "WITH RECURSIVE levels_cte(id, label, parent_id, depth,team_id) AS(" +
-            " SELECT tn.id, tn.label, tn.parent_id , CAST('1' AS INTEGER) AS depth,CAST(tn.id AS INTEGER) AS team_id"+
+    @Query(value= "WITH RECURSIVE levels_cte(level_id, label, parent_id, depth,team_id) AS(" +
+            " SELECT tn.level_id, tn.label, tn.parent_id , CAST('1' AS INTEGER) AS depth,CAST(tn.level_id AS INTEGER) AS team_id"+
             " FROM level_hierarchy AS tn "+
             " WHERE tn.parent_id = 1"+
             "UNION ALL"+
-            " SELECT c.id, c.label, c.parent_id, p.depth + 1 AS depth," +
+            " SELECT c.level_id, c.label, c.parent_id, p.depth + 1 AS depth," +
             "        (p.team_id)"+
             " FROM levels_cte AS p, level_hierarchy AS c "+
-            " WHERE c.parent_id = p.id"+
+            " WHERE c.parent_id = p.level_id"+
             ")"+
             "SELECT * FROM levels_cte AS n WHERE n.team_id= " +
-            "   (SELECT t.id FROM level_hierarchy AS t WHERE t.label=:teamName )",nativeQuery = true)
+            "   (SELECT t.level_id FROM level_hierarchy AS t WHERE t.label=:teamName )",nativeQuery = true)
     List<Level> getAllLevelInfoInTeam(@Param(TEAM_NAME) String teamName);
 }

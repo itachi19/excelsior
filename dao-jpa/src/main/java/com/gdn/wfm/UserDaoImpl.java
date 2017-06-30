@@ -5,5 +5,6 @@ package com.gdn.wfm;
  */
 public class UserDaoImpl {
 
+    public String query;
 
 }

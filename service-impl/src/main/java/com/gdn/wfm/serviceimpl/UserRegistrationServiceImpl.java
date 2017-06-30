@@ -1,5 +1,6 @@
-package com.gdn.wfm;
+package com.gdn.wfm.serviceimpl;
 
+import com.gdn.wfm.UserRegistrationService;
 import com.gdn.wfm.dao.api.LevelHierarchyRepository;
 import com.gdn.wfm.dao.api.UserRepository;
 import com.gdn.wfm.model.entity.User;
