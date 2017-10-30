@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.gdn.wfm</groupId>
-  <artifactId>wfm-parent</artifactId>
+  <groupId>com.gdn.excelsior</groupId>
+  <artifactId>excelsior-parent</artifactId>
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>${project.groupId}-${project.artifactId}</name>
@@ -10,8 +10,8 @@
     <maven>3.0.0</maven>
   </prerequisites>
   <scm>
-    <connection>scm:git:ssh://git@stash.gdn-app.com:7999/tms/wfm.git</connection>
-    <developerConnection>scm:git:ssh://git@stash.gdn-app.com:7999/tms/wfm.git</developerConnection>
+    <connection>scm:git:ssh://git@stash.gdn-app.com:7999/tms/excelsior.git</connection>
+    <developerConnection>scm:git:ssh://git@stash.gdn-app.com:7999/tms/excelsior.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
   <distributionManagement>
@@ -65,7 +65,7 @@
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-maven-plugin</artifactId>
           <configuration>
-            <mainClass>com.com.gdn.wfm.rest.web.Application</mainClass>
+            <mainClass>com.Application</mainClass>
           </configuration>
         </plugin>
         <plugin>
@@ -275,48 +275,48 @@
         <version>${javax.inject-version}</version>
       </dependency>
       <dependency>
-        <groupId>com.gdn.wfm</groupId>
-        <artifactId>wfm-model</artifactId>
+        <groupId>com.gdn.excelsior</groupId>
+        <artifactId>excelsior-model</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.gdn.wfm</groupId>
-        <artifactId>wfm-dao-api</artifactId>
+        <groupId>com.gdn.excelsior</groupId>
+        <artifactId>excelsior-dao-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.gdn.wfm</groupId>
-        <artifactId>wfm-dao-jpa</artifactId>
+        <groupId>com.gdn.excelsior</groupId>
+        <artifactId>excelsior-dao-jpa</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.gdn.wfm</groupId>
-        <artifactId>wfm-service-api</artifactId>
+        <groupId>com.gdn.excelsior</groupId>
+        <artifactId>excelsior-service-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.gdn.wfm</groupId>
-        <artifactId>wfm-service-impl</artifactId>
+        <groupId>com.gdn.excelsior</groupId>
+        <artifactId>excelsior-service-impl</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.gdn.wfm</groupId>
-        <artifactId>wfm-outbound-api</artifactId>
+        <groupId>com.gdn.excelsior</groupId>
+        <artifactId>excelsior-outbound-api</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.gdn.wfm</groupId>
-        <artifactId>wfm-outbound-impl</artifactId>
+        <groupId>com.gdn.excelsior</groupId>
+        <artifactId>excelsior-outbound-impl</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.gdn.wfm</groupId>
-        <artifactId>wfm-rest-web-model</artifactId>
+        <groupId>com.gdn.excelsior</groupId>
+        <artifactId>excelsior-rest-web-model</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>
-        <groupId>com.gdn.wfm</groupId>
-        <artifactId>wfm-rest-web</artifactId>
+        <groupId>com.gdn.excelsior</groupId>
+        <artifactId>excelsior-rest-web</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

@@ -1,6 +1,6 @@
-package com.gdn.wfm.rest.web.config;
+package com.gdn.excelsior.rest.web.config;
 
-import com.gdn.wfm.rest.web.Application;
+import com.gdn.excelsior.rest.web.Application;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 
@@ -13,7 +13,7 @@ public class WebAppInitializer extends SpringBootServletInitializer {
 
     private static Properties getProperties() {
         Properties props = new Properties();
-        props.put("spring.config.location", "file:" + System.getenv("WFM_CONF_DIR") + "wfm/");
+        props.put("spring.config.location", "file:" + System.getenv("excelsior_CONF_DIR") + "excelsior/");
         return props;
     }
 

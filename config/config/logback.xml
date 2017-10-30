@@ -7,9 +7,9 @@
   </appender>
 
   <appender name="spring" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>${catalina.home:-.}/logs/tms/wfm/spring.log</file>
+    <file>${catalina.home:-.}/logs/tms/excelsior/spring.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>${catalina.home:-.}/logs/tms/archive/wfm/spring.%d{yyyy-MM-dd}.old.log</fileNamePattern>
+      <fileNamePattern>${catalina.home:-.}/logs/tms/archive/excelsior/spring.%d{yyyy-MM-dd}.old.log</fileNamePattern>
     </rollingPolicy>
     <encoder>
       <pattern>[%X{key}]%date{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX", UTC} %-5level %logger{35} - %msg %n</pattern>
@@ -17,9 +17,9 @@
   </appender>
 
   <appender name="all" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>${catalina.home:-.}/logs/tms/wfm/all.log</file>
+    <file>${catalina.home:-.}/logs/tms/excelsior/all.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>${catalina.home:-.}/logs/tms/archive/wfm/all.%d{yyyy-MM-dd}.old.log</fileNamePattern>
+      <fileNamePattern>${catalina.home:-.}/logs/tms/archive/excelsior/all.%d{yyyy-MM-dd}.old.log</fileNamePattern>
     </rollingPolicy>
     <encoder>
       <pattern>[%X{key}]%date{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX", UTC} %-5level %logger{35} - %msg %n</pattern>
@@ -27,9 +27,9 @@
   </appender>
 
   <appender name="app" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>${catalina.home:-.}/logs/tms/wfm/app.log</file>
+    <file>${catalina.home:-.}/logs/tms/excelsior/app.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>${catalina.home:-.}/logs/tms/archive/wfm/app.%d{yyyy-MM-dd}.old.log</fileNamePattern>
+      <fileNamePattern>${catalina.home:-.}/logs/tms/archive/excelsior/app.%d{yyyy-MM-dd}.old.log</fileNamePattern>
     </rollingPolicy>
     <encoder>
       <pattern>[%X{key}]%date{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX", UTC} %-5level %logger{35} - %msg %n</pattern>
@@ -37,9 +37,9 @@
   </appender>
 
   <appender name="orm" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>${catalina.home:-.}/logs/tms/wfm/orm.log</file>
+    <file>${catalina.home:-.}/logs/tms/excelsior/orm.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>${catalina.home:-.}/logs/tms/archive/wfm/orm.%d{yyyy-MM-dd}.old.log</fileNamePattern>
+      <fileNamePattern>${catalina.home:-.}/logs/tms/archive/excelsior/orm.%d{yyyy-MM-dd}.old.log</fileNamePattern>
     </rollingPolicy>
     <encoder>
       <pattern>[%X{key}]%date{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX", UTC} %-5level %logger{35} - %msg %n</pattern>
@@ -47,9 +47,9 @@
   </appender>
 
   <appender name="cache" class="ch.qos.logback.core.rolling.RollingFileAppender">
-    <file>${catalina.home:-.}/logs/tms/wfm/cache.log</file>
+    <file>${catalina.home:-.}/logs/tms/excelsior/cache.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-      <fileNamePattern>${catalina.home:-.}/logs/tms/archive/wfm/cache.%d{yyyy-MM-dd}.old.log</fileNamePattern>
+      <fileNamePattern>${catalina.home:-.}/logs/tms/archive/excelsior/cache.%d{yyyy-MM-dd}.old.log</fileNamePattern>
     </rollingPolicy>
     <encoder>
       <pattern>[%X{key}]%date{"yyyy-MM-dd'T'HH:mm:ss,SSSXXX", UTC} %-5level %logger{35} - %msg %n</pattern>
